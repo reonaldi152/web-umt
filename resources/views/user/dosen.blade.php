@@ -1,9 +1,12 @@
 @extends('user.layouts.app')
 
-@section('title', 'Welcome')
+@section('title', 'Dosen')
 
 @section('content')
-
+    <!-- Section Header -->
+    <section id="header-section">
+        <h1>Daftar Dosen</h1>
+    </section>
     <!-- Section Dosen -->
     <section id="dosen" class="mt-5">
         <div class="container">

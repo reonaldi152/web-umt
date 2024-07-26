@@ -1,13 +1,19 @@
 <?php
 
+use App\Http\Controllers\AkreditasiController;
+use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\ApprovalRequestController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JurnalController;
 use App\Http\Controllers\KaprodiController;
 use App\Http\Controllers\LombaController;
+use App\Http\Controllers\SorotanController;
+use App\Http\Controllers\StrukturOrganisasiController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -47,11 +53,18 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/lomba', [LombaController::class, 'index']);
 Route::get('/jurnal', [JurnalController::class, 'index']);
 Route::get('/dosen', [DosenController::class, 'index']);
+Route::get('/akreditasi', [AkreditasiController::class, 'index']);
+Route::get('/struktur', [StrukturOrganisasiController::class, 'index']);
+Route::get('/sorotan', [SorotanController::class, 'index']);
+Route::get('/alumni', [AlumniController::class, 'index']);
 Route::view('/visi-misi', 'user.visi-misi');
+Route::view('/sinta', 'user.sinta');
 Route::get('/aproval', [ApprovalRequestController::class, 'showUploadForm']);
 
 
-
+Route::get('events', [EventController::class, 'index'])->name('events.index');
+Route::get('events/create', [EventController::class, 'create'])->name('events.create');
+Route::post('events', [EventController::class, 'store'])->name('events.store');
 
 
 

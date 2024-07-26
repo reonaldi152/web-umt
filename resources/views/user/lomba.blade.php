@@ -1,9 +1,12 @@
 @extends('user.layouts.app')
 
-@section('title', 'Welcome')
+@section('title', 'Lomba')
 
 @section('content')
-
+    <!-- Section Header -->
+    <section id="header-section">
+        <h1>Daftar Lomba</h1>
+    </section>
     {{-- Section Lomba --}}
     <section id="lomba">
         <div class="container mt-5">

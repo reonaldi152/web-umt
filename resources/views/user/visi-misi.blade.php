@@ -1,8 +1,12 @@
 @extends('user.layouts.app')
 
-@section('title', 'Welcome')
+@section('title', 'Visi-Misi')
 
 @section('content')
+    <!-- Section Header -->
+    <section id="header-section">
+        <h1>Visi Misi</h1>
+    </section>
 
     <!-- Section Visi Misi -->
     <section id="visi-misi" class="mt-5">

@@ -1,9 +1,14 @@
 @extends('user.layouts.app')
 
-@section('title', 'Welcome')
+@section('title', 'Jadwal')
 
 @section('content')
-    <div style="padding: 0 70px;">
+    <!-- Section Header -->
+    <section id="header-section" class="mb-5">
+        <h1>Daftar Jadwal</h1>
+    </section>
+
+    <div style="padding: 70px;">
         <div id="calendar"></div>
         {{-- <div id="event-list">
         <h3>Events on <span id="selected-date">Select a date</span></h3>

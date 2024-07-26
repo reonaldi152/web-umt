@@ -1,9 +1,12 @@
 @extends('user.layouts.app')
 
-@section('title', 'Welcome')
+@section('title', 'Jurnal')
 
 @section('content')
-
+    <!-- Section Header -->
+    <section id="header-section">
+        <h1>Daftar Jurnal</h1>
+    </section>
     {{-- Section Jurnal --}}
     <section id="jurnal">
         <div class="container mt-5">

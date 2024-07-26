@@ -38,7 +38,7 @@
 
         <div class="me-md-auto text-center text-md-start">
             <div class="copyright text-center">
-                &copy; Copyright <strong><span>HMIF ITI</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>TEKNIK INFORMATIKA UMT</span></strong>. All Rights Reserved
             </div>
         </div>
     </div>

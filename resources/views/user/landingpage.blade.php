@@ -5,7 +5,7 @@
 @section('content')
 
     {{-- Section Hero --}}
-    <section id="hero" class="d-flex align-items-center mt-5">
+    <section id="hero" class="d-flex align-items-center">
         <div class="container position-relative">
             <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 justify-content-center align-items-center">
                 <div class="col col-lg-6">
@@ -85,30 +85,48 @@
         </div>
     </section>
 
-    {{-- ALUMNI --}}
-    {{-- <section id="alumni">
-            <div class="conatiner mt-5">
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
+    {{-- Section Alumni --}}
+    <section id="alumni" class="mb-5">
+        <div class="container mt-5">
+            <div class="text-center mb-4">
+                <h3 class="fs-3 fw-bolder">Alumni</h3>
+            </div>
+            <div class="row row-cols-1 row-cols-md-4 g-4">
+                @foreach ($alumnis as $alumni)
+                    <div class="col mb-4">
                         <div class="card h-100">
-                            <div class="card-img-top">
-                                <img src="https://placehold.co/100x100" alt="Profile Image" class="rounded-circle">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">AGIT AMRULLAH, M.KOM.</h5>
-                                <hr>
-                                <p class="card-text"><strong>Topik Ditawarkan</strong></p>
-                                <p class="card-text">Iot, Microcontroller, Smart City, Data Mining</p>
-                                <p class="card-text"><em>"Ora et Labora"</em></p>
-                                <div class="social-icons">
-                                    <i class="fab fa-facebook"></i>
-                                    <i class="fab fa-youtube"></i>
-                                    <i class="fab fa-tiktok"></i>
+                            <img src="{{ $alumni->image }}" class="card-img-top" alt="{{ $alumni->name }}">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ $alumni->name }}</h5>
+                                <p class="card-text">{{ $alumni->jabatan }}</p>
+                                <div class="d-flex justify-content-center">
+                                    @if ($alumni->linkedin)
+                                        <a href="{{ $alumni->linkedin }}" class="btn btn-link"><i
+                                                class="bi bi-linkedin"></i></a>
+                                    @endif
+                                    @if ($alumni->instagram)
+                                        <a href="{{ $alumni->instagram }}" class="btn btn-link"><i
+                                                class="bi bi-instagram"></i></a>
+                                    @endif
+                                    @if ($alumni->email)
+                                        <a href="mailto:{{ $alumni->email }}" class="btn btn-link"><i
+                                                class="bi bi-envelope"></i></a>
+                                    @endif
+                                    @if ($alumni->youtube)
+                                        <a href="{{ $alumni->youtube }}" class="btn btn-link"><i
+                                                class="bi bi-youtube"></i></a>
+                                    @endif
+                                    @if ($alumni->tiktok)
+                                        <a href="{{ $alumni->tiktok }}" class="btn btn-link"><i
+                                                class="bi bi-tiktok"></i></a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
-        </section> --}}
+        </div>
+    </section>
+
 @endsection
