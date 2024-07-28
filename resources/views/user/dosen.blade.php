@@ -17,7 +17,8 @@
                 @foreach ($dosens as $index => $dosen)
                     <div class="col-md-6 mb-4">
                         <div class="card">
-                            <img src="{{ $dosen->image }}" class="card-img-top" alt="{{ $dosen->name }}">
+                            <img src="{{ asset('storage/' . $dosen->image) }}" class="card-img-top"
+                                alt="{{ $dosen->name }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $dosen->name }}</h5>
                                 <p class="card-text">{{ $dosen->jabatan }}</p>

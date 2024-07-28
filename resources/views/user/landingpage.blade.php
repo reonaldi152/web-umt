@@ -72,10 +72,10 @@
                     <div class="col">
                         <div class="card h-100">
                             <div class="home-card-img-top">
-                                <img src="{{ $talenta->image }}" alt="Placeholder image">
+                                <img src="{{ asset('storage/' . $talenta->image) }}" alt="Placeholder image">
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">{{ asset('storage/' . $talenta->image) }}</h5>
+                                <h5 class="card-title">{{ $talenta->title }}</h5>
                                 <p class="card-text">{{ $talenta->description }}</p>
                             </div>
                         </div>
@@ -95,7 +95,8 @@
                 @foreach ($alumnis as $alumni)
                     <div class="col mb-4">
                         <div class="card h-100">
-                            <img src="{{ $alumni->image }}" class="card-img-top" alt="{{ $alumni->name }}">
+                            <img src="{{ asset('storage/' . $alumni->image) }}" class="card-img-top"
+                                alt="{{ $alumni->name }}">
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $alumni->name }}</h5>
                                 <p class="card-text">{{ $alumni->jabatan }}</p>
