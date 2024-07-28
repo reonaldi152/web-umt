@@ -28,7 +28,7 @@
     {{-- Custom CSS --}}
     <link href="{{ url('assets/style.css') }}" rel="stylesheet">
 
-    <title>HMIF | @yield('title')</title>
+    <title>UMT | @yield('title')</title>
 </head>
 
 <body>

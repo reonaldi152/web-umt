@@ -16,23 +16,11 @@
                     </p>
                 </div>
                 <div class="col col-lg-4 text-center">
-                    <img src="{{ url('/assets/hero.png') }}" alt="" srcset="" class="img-fluid">
+                    <img src="{{ url('/assets/hero.png') }}" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
     </section>
-
-    {{-- Section Program Studi Favorit --}}
-    {{-- <section id="psf" class="d-flex align-items-center justify-content-center">
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col">
-                        <h1 class="mb-3">Program Studi Favorit</h1>
-                        <h3 class="mb-4">Eksplorasi Potensimu di Prodi Informatika</h3>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
 
     {{-- Section Agenda dan Pengumuman --}}
     <section id="ap">
@@ -46,7 +34,7 @@
                         <div class="card h-100">
                             <div class="home-card-img-top">
                                 <img src="{{ asset('storage/' . $agenda->image) }}" alt="Placeholder image"
-                                    class="card-img-top">
+                                    class="card-img-top img-fluid">
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $agenda->title }}</h5>
@@ -59,8 +47,6 @@
         </div>
     </section>
 
-
-
     {{-- Section Talenta Terbaik --}}
     <section id="tt" class="mb-5">
         <div class="container mt-5">
@@ -72,7 +58,8 @@
                     <div class="col">
                         <div class="card h-100">
                             <div class="home-card-img-top">
-                                <img src="{{ asset('storage/' . $talenta->image) }}" alt="Placeholder image">
+                                <img src="{{ asset('storage/' . $talenta->image) }}" alt="Placeholder image"
+                                    class="img-fluid">
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $talenta->title }}</h5>
@@ -95,7 +82,7 @@
                 @foreach ($alumnis as $alumni)
                     <div class="col mb-4">
                         <div class="card h-100">
-                            <img src="{{ asset('storage/' . $alumni->image) }}" class="card-img-top"
+                            <img src="{{ asset('storage/' . $alumni->image) }}" class="card-img-top img-fluid"
                                 alt="{{ $alumni->name }}">
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $alumni->name }}</h5>
