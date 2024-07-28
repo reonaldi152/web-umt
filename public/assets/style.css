@@ -193,6 +193,11 @@ img.img-fluid {
     height: auto;
 }
 
+.center-card {
+    display: flex;
+    justify-content: center;
+}
+
 
 
 /* #psf {

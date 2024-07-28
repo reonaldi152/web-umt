@@ -15,7 +15,7 @@
             <div class="text-center mb-4">
                 <h3 class="fs-3 fw-bolder">Alumni</h3>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
                 @foreach ($alumnis as $alumni)
                     <div class="col-md-3 mb-4">
                         <div class="card h-100">

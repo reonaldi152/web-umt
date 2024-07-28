@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg" style="background-color: #05184E">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{ url('assets/logo.png') }}" alt="Logo" class="d-inline-block align-text-center">
@@ -11,10 +11,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{ url('/') }}">Beranda</a>
+                    <a class="nav-link text-white" aria-current="page" href="{{ url('/') }}">Beranda</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="layananDropdown" role="button"
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Profile
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item " href="{{ url('visi-misi') }}">Visi dan Misi</a></li>
+                        <li><a class="dropdown-item" href="{{ url('dosen') }}">Dosen</a></li>
+                        <li><a class="dropdown-item" href="{{ url('akreditasi') }}">Akreditasi</a></li>
+                        <li><a class="dropdown-item" href="{{ url('struktur') }}">SO</a></li>
+                        <li><a class="dropdown-item" href="{{ url('alumni') }}">Alumni</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="layananDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Layanan
                     </a>
@@ -25,7 +38,7 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="layananDropdown" role="button"
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="layananDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Agenda
                     </a>
@@ -33,21 +46,9 @@
                         <li><a class="dropdown-item" href="{{ url('events') }}">Jadwal</a></li>
                     </ul>
                 </li>
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Profile
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                        <li><a class="dropdown-item" href="{{ url('visi-misi') }}">Visi dan Misi</a></li>
-                        <li><a class="dropdown-item" href="{{ url('dosen') }}">Dosen</a></li>
-                        <li><a class="dropdown-item" href="{{ url('akreditasi') }}">Akreditasi</a></li>
-                        <li><a class="dropdown-item" href="{{ url('struktur') }}">SO</a></li>
-                        <li><a class="dropdown-item" href="{{ url('alumni') }}">Alumni</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="risetDropdown" role="button"
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="risetDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Riset dan Pengabdian
                     </a>
@@ -57,7 +58,7 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="infoDropdown" role="button"
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="infoDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Info Penting
                     </a>
@@ -77,8 +78,8 @@
                 @endguest
                 @auth
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             @auth
                                 {{ Auth::user()->name }}
                             @endauth

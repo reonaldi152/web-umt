@@ -1,4 +1,4 @@
-<footer id="footer" style="background-color: #222; color: #fff; padding: 40px 0;">
+<footer id="footer" style="background-color: #05184E; color: #fff; padding: 40px 0;">
 
     <div class="footer-top" style="padding-bottom: 30px;">
         <div class="container">

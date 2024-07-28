@@ -18,7 +18,7 @@
     </div> --}}
         <div class="container mt-5">
             <h1 class="text-center mb-4">Events List</h1>
-            <div class="row">
+            <div class="row justify-content-center">
                 @foreach ($events as $event)
                     <div class="col-md-4 mb-4">
                         <div class="card h-100 shadow-sm" style="border: none; background-color: #f8f9fa;">

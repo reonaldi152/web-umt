@@ -53,7 +53,7 @@
             <div class="col">
                 <h3 class="fs-3 fw-bolder mb-4">Talenta Terbaik</h3>
             </div>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
                 @foreach ($talentas as $talenta)
                     <div class="col">
                         <div class="card h-100">
@@ -78,7 +78,7 @@
             <div class="text-center mb-4">
                 <h3 class="fs-3 fw-bolder">Alumni</h3>
             </div>
-            <div class="row row-cols-1 row-cols-md-4 g-4">
+            <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center">
                 @foreach ($alumnis as $alumni)
                     <div class="col mb-4">
                         <div class="card h-100">
