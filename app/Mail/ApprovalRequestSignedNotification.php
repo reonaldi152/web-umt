@@ -17,10 +17,12 @@ class ApprovalRequestSignedNotification extends Mailable
      * Create a new message instance.
      */
     public $approvalRequest;
+    public $qrCodeUrl;
 
-    public function __construct($approvalRequest)
+    public function __construct($approvalRequest, $qrCodeUrl)
     {
         $this->approvalRequest = $approvalRequest;
+        $this->qrCodeUrl = $qrCodeUrl;
     }
 
     /**
@@ -40,6 +42,10 @@ class ApprovalRequestSignedNotification extends Mailable
     {
         return new Content(
             view: 'emails.approval_request_signed',
+            with: [
+                'approvalRequest' => $this->approvalRequest,
+                'qrCodeUrl' => $this->qrCodeUrl,
+            ],
         );
     }
 

@@ -7,10 +7,15 @@ use App\Mail\ApprovalRequestRejectedNotification;
 use App\Mail\ApprovalRequestSignedNotification;
 use App\Mail\NewApprovalRequestNotification;
 use App\Models\ApprovalRequest;
+use App\Models\Kaprodi;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ApprovalRequestController extends Controller
@@ -21,6 +26,37 @@ class ApprovalRequestController extends Controller
     }
 
     // Handle file upload
+    // public function upload(Request $request)
+    // {
+    //     if (!Auth::check()) {
+    //         return redirect()->back()->with('error', 'Anda harus login terlebih dahulu untuk mengunggah dokumen.');
+    //     }
+
+    //     $validator = Validator::make($request->all(), [
+    //         'document_name' => 'required|string',
+    //         'document' => 'required|file|max:25600', // max file size 25MB
+    //         'notes' => 'nullable|string',
+    //     ]);
+
+    //     if ($validator->fails()) {
+    //         return redirect()->back()->withErrors($validator)->withInput();
+    //     }
+
+    //     $documentPath = $request->file('document')->store('documents');
+
+    //     $approvalRequest = ApprovalRequest::create([
+    //         'user_id' => Auth::id(),
+    //         'document_name' => $request->input('document_name'),
+    //         'document_path' => $documentPath,
+    //         'notes' => $request->input('notes'),
+    //     ]);
+
+    //     // Send notification to Kaprodi
+    //     Mail::to('reonaldi1105@gmail.com')->send(new NewApprovalRequestNotification($approvalRequest));
+
+    //     return redirect('mahasiswa/status')->with('success', 'File uploaded successfully!');
+    // }
+
     public function upload(Request $request)
     {
         if (!Auth::check()) {
@@ -46,8 +82,11 @@ class ApprovalRequestController extends Controller
             'notes' => $request->input('notes'),
         ]);
 
-        // Send notification to Kaprodi
-        Mail::to('reonaldi1105@gmail.com')->send(new NewApprovalRequestNotification($approvalRequest));
+        // Mengambil email Kaprodi
+        $kaprodiEmails = Kaprodi::pluck('email')->toArray();
+
+        // Mengirim email notifikasi ke Kaprodi
+        Mail::to($kaprodiEmails)->send(new \App\Mail\NewApprovalRequestNotification($approvalRequest));
 
         return redirect('mahasiswa/status')->with('success', 'File uploaded successfully!');
     }
@@ -90,6 +129,32 @@ class ApprovalRequestController extends Controller
         return view('approval_requests.status', compact('approvalRequests'));
     }
 
+    // public function uploadSignedDocument(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'signed_document' => 'required|file|max:25600', // max file size 25MB
+    //     ]);
+
+    //     $approvalRequest = ApprovalRequest::findOrFail($id);
+
+    //     // Simpan path dokumen yang ditandatangani
+    //     $signedDocumentPath = $request->file('signed_document')->store('signed_documents');
+    //     $approvalRequest->update(['signed_document_path' => $signedDocumentPath]);
+
+    //     // Buat URL unduhan untuk dokumen yang ditandatangani
+    //     $downloadUrl = url('/approval-requests/download-signed/' . $approvalRequest->id);
+
+    //     // Hasilkan QR code menggunakan endroid/qr-code
+    //     $qrCode = new QrCode($downloadUrl);
+    //     $writer = new PngWriter();
+    //     $qrCodeImage = base64_encode($writer->write($qrCode)->getString());
+
+    //     // Kirim notifikasi ke mahasiswa
+    //     Mail::to($approvalRequest->user->email)->send(new ApprovalRequestSignedNotification($approvalRequest, $qrCodeImage));
+
+    //     return back()->with('success', 'Signed document uploaded successfully!');
+    // }
+
     public function uploadSignedDocument(Request $request, $id)
     {
         $request->validate([
@@ -98,12 +163,30 @@ class ApprovalRequestController extends Controller
 
         $approvalRequest = ApprovalRequest::findOrFail($id);
 
+        // Simpan path dokumen yang ditandatangani
         $signedDocumentPath = $request->file('signed_document')->store('signed_documents');
-
         $approvalRequest->update(['signed_document_path' => $signedDocumentPath]);
 
-        // Send notification to student
-        Mail::to($approvalRequest->user->email)->send(new ApprovalRequestSignedNotification($approvalRequest));
+        // Buat URL unduhan untuk dokumen yang ditandatangani
+        $downloadUrl = url('/approval-requests/download-signed/' . $approvalRequest->id);
+
+        // Pastikan direktori `qrcodes` ada
+        $qrCodeDirectory = storage_path('app/public/qrcodes');
+        if (!File::exists($qrCodeDirectory)) {
+            File::makeDirectory($qrCodeDirectory, 0755, true);
+        }
+
+        // Hasilkan QR code menggunakan endroid/qr-code dan simpan sebagai gambar
+        $qrCode = new QrCode($downloadUrl);
+        $writer = new PngWriter();
+        $qrCodePath = 'qrcodes/' . $approvalRequest->id . '.png';
+        $writer->write($qrCode)->saveToFile(storage_path('app/public/' . $qrCodePath));
+
+        // URL gambar QR code
+        $qrCodeUrl = Storage::url($qrCodePath);
+
+        // Kirim notifikasi ke mahasiswa
+        Mail::to($approvalRequest->user->email)->send(new ApprovalRequestSignedNotification($approvalRequest, $qrCodeUrl));
 
         return back()->with('success', 'Signed document uploaded successfully!');
     }
