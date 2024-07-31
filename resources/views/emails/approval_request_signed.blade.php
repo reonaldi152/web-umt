@@ -98,7 +98,7 @@
 
     <p>You can download your signed document by scanning the QR code below:</p>
 
-    <p><img src="{{ $qrCodeUrl }}" alt="QR Code"></p>
+    <p><img src="{{ asset($qrCodeUrl) }}" alt="QR Code"></p>
 
     <p>You can also download your signed document <a
             href="{{ url('/approval-requests/download-signed/' . $approvalRequest->id) }}">here</a>.</p>

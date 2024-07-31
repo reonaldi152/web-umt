@@ -65,7 +65,7 @@ class ApprovalRequestController extends Controller
 
         $validator = Validator::make($request->all(), [
             'document_name' => 'required|string',
-            'document' => 'required|file|max:25600', // max file size 25MB
+            'document' => 'required|file|mimes:pdf|max:25600', // max file size 25MB
             'notes' => 'nullable|string',
         ]);
 
@@ -158,7 +158,7 @@ class ApprovalRequestController extends Controller
     public function uploadSignedDocument(Request $request, $id)
     {
         $request->validate([
-            'signed_document' => 'required|file|max:25600', // max file size 25MB
+            'signed_document' => 'required|file|mimes:pdf|max:25600', // max file size 25MB
         ]);
 
         $approvalRequest = ApprovalRequest::findOrFail($id);
