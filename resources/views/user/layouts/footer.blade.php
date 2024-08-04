@@ -17,8 +17,8 @@
                                 style="color: #fff;">Info Akademik</a></li>
                         <li><i class="bx bx-chevron-right" style="color: #ffdd57;"></i> <a href="#"
                                 style="color: #fff;">Info Pembayaran</a></li>
-                        <li><i class="bx bx-chevron-right" style="color: #ffdd57;"></i> <a href="#"
-                                style="color: #fff;">SimBim</a></li>
+                        {{-- <li><i class="bx bx-chevron-right" style="color: #ffdd57;"></i> <a href="#"
+                                style="color: #fff;">SimBim</a></li> --}}
                     </ul>
                 </div>
 
