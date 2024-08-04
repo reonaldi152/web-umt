@@ -5,7 +5,7 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <img src="{{ url('assets/logo.png') }}" alt="Logo" width="175" height="175">
+                    <img src="{{ url('assets/logo.JPG') }}" alt="Logo" width="175" height="175" class="rounded">
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
@@ -17,8 +17,8 @@
                                 style="color: #fff;">Info Akademik</a></li>
                         <li><i class="bx bx-chevron-right" style="color: #ffdd57;"></i> <a href="#"
                                 style="color: #fff;">Info Pembayaran</a></li>
-                        {{-- <li><i class="bx bx-chevron-right" style="color: #ffdd57;"></i> <a href="#"
-                                style="color: #fff;">SimBim</a></li> --}}
+                        <li><i class="bx bx-chevron-right" style="color: #ffdd57;"></i> <a href="#"
+                                style="color: #fff;">SiBim</a></li>
                     </ul>
                 </div>
 

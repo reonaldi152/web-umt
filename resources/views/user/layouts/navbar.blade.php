@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg" style="background-color: #05184E">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ url('assets/logo.png') }}" alt="Logo" class="d-inline-block align-text-center">
+            <img src="{{ url('assets/logo.JPG') }}" alt="Logo"
+                class="d-inline-block align-text-center img-fluid rounded mx-auto d-block">
         </a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
